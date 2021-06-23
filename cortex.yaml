@@ -1,13 +1,11 @@
-- name: iris-classifier
+- name: ml-brand-gender-a
   kind: RealtimeAPI
   predictor:
     type: python
     path: predictor.py
     config:
-      bucket: cortex-examples
-      key: sklearn/iris-classifier/model_bg_A.pkl
-  monitoring:
-    model_type: classification
+      model_path: "model_bg_A.pkl"
+      deployment_name: "ml-brand-gender-A"
   compute:
     cpu: 0.2
     mem: 200M

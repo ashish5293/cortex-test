@@ -1,0 +1,31 @@
+- name: ml-brand-gender-a
+  kind: RealtimeAPI
+  predictor:
+    type: python
+    path: predictor.py
+    config:
+      model_path: "model_bg_A.pkl"
+      deployment_name: "ml-brand-gender-A"
+  compute:
+    cpu: 0.2
+    mem: 200M
+
+- name: ml-brand-gender-b
+  kind: RealtimeAPI
+  predictor:
+    type: python
+    path: predictor.py
+    config:
+      model_path: "model_bg_A.pkl"
+      deployment_name: "ml-brand-gender-B"
+  compute:
+    cpu: 0.2
+    mem: 200M
+
+- name: ml-brand-gender
+  kind: TrafficSplitter
+  apis:
+    - name: ml-brand-gender-a
+      weight: 30
+    - name: ml-brand-gender-b
+      weight: 70

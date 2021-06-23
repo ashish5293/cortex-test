@@ -5,6 +5,8 @@ from botocore.client import Config
 import pickle
 import pandas as pd
 
+labels = ["setosa", "versicolor", "virginica"]
+
 
 class PythonPredictor:
     def __init__(self, config):
@@ -69,6 +71,7 @@ class PythonPredictor:
 
         return {
             "deployment_name": self.deployment_name,
+            "predictor_info": "ROLLING UPDATES DEMO",
             "predictions": predictions_dict,
         }
 
