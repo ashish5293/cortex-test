@@ -6,6 +6,8 @@
     config:
       model_path: "model_bg_A.pkl"
       deployment_name: "ml-brand-gender-A"
+  networking:
+    endpoint: "ml-bg-a"
   compute:
     cpu: 0.2
     mem: 200M
@@ -16,13 +18,15 @@
     type: python
     path: predictor.py
     config:
-      model_path: "model_bg_A.pkl"
+      model_path: "model_bg_B.pkl"
       deployment_name: "ml-brand-gender-B"
+  networking:
+    endpoint: "ml-bg-b"
   compute:
     cpu: 0.2
     mem: 200M
 
-- name: ml-brand-gender
+- name: ml-brand-gender-tf
   kind: TrafficSplitter
   apis:
     - name: ml-brand-gender-a

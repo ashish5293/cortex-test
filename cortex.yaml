@@ -6,6 +6,8 @@
     config:
       model_path: "model_bg_A.pkl"
       deployment_name: "ml-brand-gender-A"
+  networking:
+    endpoint: "ml-bg-a"
   compute:
     cpu: 0.2
     mem: 200M

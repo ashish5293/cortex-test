@@ -12,13 +12,14 @@ class PythonPredictor:
     def __init__(self, config):
 
         self.deployment_name = config["deployment_name"]
+        self.model_path = config["model_path"]
         with open(config["model_path"], "rb") as inp:
             self.model = pickle.load(inp)
 
     def get_model(self):
         """Get the model object for this instance, loading it if it's not already loaded."""
         if self.model is None:
-            with open("model_bg_A.pkl", "rb") as inp:
+            with open(self.model_path,"rb") as inp:
                 self.model = pickle.load(inp)
         return self.model
 
